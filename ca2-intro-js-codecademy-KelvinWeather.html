@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Kelvin Weather</title>
 </head>
 <body>
     <script>
@@ -20,6 +20,13 @@
     fahrenheit=Math.floor(fahrenheit); 
     console.log(`The temperature is ${fahrenheit} degrees Fahrenheit.`); // Output: The temperature is 68 degrees Fahrenheit.
     
+    // Convert to Newton
+    let newton = celsius * (33 / 100);
+
+    // Round down
+    newton = Math.floor(newton);
+
+    console.log(`The temperature is ${newton} degrees Newton.`); // The temperature is 6 degrees Newton.
     </script>
 </body>
 </html>

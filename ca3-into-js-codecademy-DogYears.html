@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dog Years</title>
+</head>
+<body>
+    <script>
+    // my age
+    const myAge= 33;
+
+    //the value saved to this variable will change.
+    let earlyYears=2;
+
+    //The first two years of a dog’s life count as 10.5 dog years each.
+    earlyYears*=10.5;
+
+    //Since we already accounted for the first two years, take the myAge variable, and subtract 2 from it.
+    let laterYears= myAge-2;
+
+    //Multiply the laterYears variable by 4 to calculate the number of dog years accounted for by your later years.
+    laterYears*=4;
+
+    // checking
+    console.log(earlyYears);
+    console.log(laterYears);
+
+    //Add earlyYears and laterYears together, and store that in a variable named myAgeInDogYears
+    const myAgeInDogYears=earlyYears+laterYears;
+
+    //Write your name as a string, call its built-in method .toLowerCase(), and store the result in a variable called myName.
+    const myName='Zeynep'.toLowerCase();
+
+    console.log(`My name is ${myName}. I am ${myAge} years old in human years which is ${myAgeInDogYears} years old in dog years.`)
+    // Output: 
+    // 21
+    // 124
+    // My name is zeynep. I am 33 years old in human years which is 145 years old in dog years.
+    </script>
+</body>
+</html>
