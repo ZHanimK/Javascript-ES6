@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Race Day</title>
+</head>
+<body>
+    <script>
+    // hoisting feature in JavaScript which allows access to function declarations before they’re defined.
+    console.log(greetWorld()); // Output: Hello, World!
+    function greetWorld() {
+    console.log('Hello, World!');
+    }  
+
+    //calling function
+    function sayThanks(){
+    console.log('Thank you for your purchase! We appreciate your business.');
+    }
+    sayThanks();
+
+    //using parametres in functions
+    function sayThanks(name) {
+    console.log('Thank you for your purchase '+ name + '! We appreciate your business.');
+    }
+    sayThanks('Zeynep');
+
+    //Default Parameters
+    function greeting (name = 'stranger') {
+    console.log(`Hello, ${name}!`)
+    }
+    greeting('Nick') // Output: Hello, Nick!
+    greeting() // Output: Hello, stranger!
+
+    //example
+    function makeShoppingList(item1='milk', item2='bread', item3='eggs'){
+    console.log(`Remember to buy ${item1}`);
+    console.log(`Remember to buy ${item2}`);
+    console.log(`Remember to buy ${item3}`);
+    }
+    makeShoppingList('apple'); 
+    //Output: 
+    // Remember to buy apple
+    // Remember to buy bread
+    // Remember to buy eggs
+
+    // using RETURN--The return keyword is powerful because it allows functions to produce an output. We can then save the output to a variable for later use.
+
+    function rectangleArea(width, height) {
+    let area = width * height 
+    }
+    console.log(rectangleArea(5, 7)) // Prints undefined
+
+    function rectangleArea(width, height) {
+    let area = width * height 
+    return area;
+    }
+    console.log(rectangleArea(5, 7)) // Prints 35
+
+    //example
+    function rectangleArea(width, height) {
+    if (width < 0 || height < 0) {
+        return 'You need positive integers to calculate area!';
+    }
+        return width * height; // This return statement width * height will not run.
+    }
+
+    //helper function
+    //a function that converts the temperature from Celsius to Fahrenheit, we could write two functions like:
+    function multiplyByNineFifths(number) {
+    return number * (9/5);
+    };
+    function getFahrenheit(celsius) {
+    return multiplyByNineFifths(celsius) + 32;
+    };
+    getFahrenheit(15); // Returns 59
+
+    //example
+    function monitorCount(rows, columns) {
+    return rows * columns;
+    }
+    function costOfMonitors(rows, columns){
+    return monitorCount(rows, columns)*200;
+    }
+    const totalCost=costOfMonitors(5,4);
+    console.log(totalCost); //Output: 4000
+
+    //Function Expressions
+    const plantNeedsWater=function(day){
+    if (day==='Wednesday'){
+        return true;
+    } else {
+        return false;
+    }
+    }
+    plantNeedsWater('Tuesday');
+    console.log(plantNeedsWater('Tuesday')) //Output: false
+
+    //Arrow Functions
+    const rectangleArea = (width, height) => {
+    let area = width * height;
+    return area;
+    };
+
+    //Concise Body Arrow Functions
+    const squareNum = (num) => {
+    return num * num;
+    };
+    const squareNum = num => num * num; //A function body composed of a single-line block does not need curly braces. Without the curly braces, whatever that line evaluates will be automatically returned. The contents of the block should immediately follow the arrow => and the return keyword can be removed. This is referred to as implicit return.
+
+    //example
+    const plantNeedsWater = day => day === 'Wednesday' ? true : false;
+
+
+
+    
+    </script>
+</body>
+</html>
