@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Arrays</title>
+</head>
+<body>
+    <script>
+    //defining array
+    const hobbies=['swimming', 'petting a cat', 'sleeping'];
+    console.log(hobbies); // Output: [ 'swimming', 'petting a cat', 'sleeping' ]
+
+    const hello = 'Hello World';
+    console.log(hello[6]);
+    // Output: W
+
+    const famousSayings = ['Fortune favors the brave.', 'A joke is a very serious thing.', 'Where there is love there is life.'];
+    const listItem=famousSayings[0];
+    console.log(listItem);
+    console.log(famousSayings[2]);
+    console.log(famousSayings[3]);
+    // Output;
+    // Fortune favors the brave.
+    // Where there is love there is life.
+    // undefined
+
+    // Update Elements
+    let seasons = ['Winter', 'Spring', 'Summer', 'Fall'];
+    seasons[3] = 'Autumn';
+    console.log(seasons); 
+    //Output: ['Winter', 'Spring', 'Summer', 'Autumn']
+
+    //Arrays with let and const
+    let condiments = ['Ketchup', 'Mustard', 'Soy Sauce', 'Sriracha'];
+
+    const utensils = ['Fork', 'Knife', 'Chopsticks', 'Spork'];
+    condiments[0]='Mayo';
+    console.log(condiments[0]);
+    condiments=['Mayo'];
+    console.log(condiments);//works fine
+
+    utensils[3]='Spoon';
+    console.log(utensils)
+    utensils=['knife','spoon'];
+    console.log(utensils); //Throws error
+
+    //The .length property
+    const newYearsResolutions = ['Keep a journal', 'Take a falconry class'];
+    console.log(newYearsResolutions.length); // Output: 2
+
+    //The .push() Method
+    const itemTracker = ['item 0', 'item 1', 'item 2'];
+    itemTracker.push('item 3', 'item 4');
+    console.log(itemTracker); // Output: ['item 0', 'item 1', 'item 2', 'item 3', 'item 4'];
+
+    //The .pop() Method
+    const newItemTracker = ['item 0', 'item 1', 'item 2'];
+    const removed = newItemTracker.pop();
+    console.log(newItemTracker); // Output: [ 'item 0', 'item 1' ]
+    console.log(removed); // Output: item 2
+
+    //More Array Methods
+    const groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+    groceryList.shift();
+
+    //The shift() method removes the first element from an array and returns that removed element. This method changes the length of the array.
+    groceryList.unshift('popcorn');
+    console.log(groceryList);
+    //The unshift() method adds one or more elements to the beginning of an array and returns the new length of the array.
+    console.log(groceryList.slice(1, 4));
+    //The slice() method returns a shallow copy of a portion of an array into a new array object selected from begin to end (end not included). The original array will not be modified.
+    console.log(groceryList);
+    const pastaIndex=groceryList.indexOf('pasta');
+    console.log(pastaIndex);
+
+    //Arrays and Functions
+    const flowers = ['peony', 'daffodil', 'marigold'];
+    function addFlower(arr) {
+        arr.push('lily');
+    }
+    addFlower(flowers);
+    console.log(flowers); // Output: ['peony', 'daffodil', 'marigold', 'lily']
+    //the change to the array was maintained outside of the function!
+
+
+    //Nested Arrays
+    const nestedArr = [[1], [2, 3]];
+    console.log(nestedArr[1]); // Output: [2, 3]
+    console.log(nestedArr[1][0]); // Output: 2
+
+
+    </script>
+</body>
+</html>
