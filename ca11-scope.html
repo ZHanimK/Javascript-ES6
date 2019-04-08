@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sleep Debt Calculator</title>
+</head>
+<body>
+    <script>
+    //Blocks and Scope
+    const city='New York City';
+    const logCitySkyline = () => {
+    let skyscraper='Empire State Building';
+    return 'The stars over the ' + skyscraper + ' in ' + city; //notice city can be used in this block
+    };
+    console.log(logCitySkyline()) // Output: The stars over the Empire State Building in New York City
+
+    //global scope- global defined variables
+    const satellite='The Moon';
+    const galaxy='The Milky Way';
+    const stars='North Star';
+    const callMyNightSky= ()=>{
+    return 'Night Sky: ' + satellite + ', ' + stars + ', and ' + galaxy;
+    }
+    console.log(callMyNightSky())
+
+    //Block scope
+    const logSkyColor = () => {
+    let color = 'blue'; 
+    console.log(color); // blue 
+    };
+
+    logSkyColor(); // blue 
+    console.log(color); // ReferenceError
+
+    //Scope Pollution
+    let num = 50;
+    const logNum = () => {
+    num = 100; // Take note of this line of code
+    console.log(num);
+    };
+    logNum(); // Prints 100
+    console.log(num); // Prints 100
+    //Even though the reassignment is allowed and we won’t get an error, if we decided to use num later, we’ll unknowingly use the new value of num.
+
+    
+
+    </script>
+</body>
+</html>
