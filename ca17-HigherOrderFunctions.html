@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Higher Order Function</title>
+</head>
+<body>
+    <script>
+    //Functions as Data
+    //In JavaScript, functions are first class objects. This means that, like other objects you’ve encountered, JavaScript functions can have properties and methods.
+    const announceThatIAmDoingImportantWork = () => {
+        console.log("I’m doing very important work!");
+    };
+    const busy = announceThatIAmDoingImportantWork;
+    busy(); // This function call barely takes any space!
+
+    //Since functions are a type of object, they have properties such as .length and .name and methods such as .toString(). 
+
+    //example
+    const checkThatTwoPlusTwoEqualsFourAMillionTimes = () => {
+    for(let i = 1; i <= 1000000; i++) {
+            if ( (2 + 2) != 4) {
+            console.log('Something has gone very wrong :( ');
+            }
+        }
+    };
+
+    // Write your code below
+    const is2p2 = checkThatTwoPlusTwoEqualsFourAMillionTimes;
+    is2p2();
+    console.log(is2p2.name); //output:[Function: checkThatTwoPlusTwoEqualsFourAMillionTimes]
+
+    const checkThatTwoPlusTwoEqualsFourAMillionTimes = () => {
+    for(let i = 1; i <= 1000000; i++) {
+        if ( (2 + 2) != 4) {
+        console.log('Something has gone very wrong :( ');
+        }
+    }
+    };
+
+    const addTwo = num => num + 2;
+
+    const timeFuncRuntime = funcParameter => {
+    let t1 = Date.now();
+    funcParameter();
+    let t2 = Date.now();
+    return t2 - t1;
+    };
+
+    // Write your code below
+
+    const time2p2 = timeFuncRuntime(checkThatTwoPlusTwoEqualsFourAMillionTimes);
+
+    const checkConsistentOutput = (func, val) => {
+        let firstTry = func(val);
+        let secondTry = func(val);
+        if (firstTry === secondTry) {
+            return firstTry
+        } else {
+            return 'This function returned inconsistent results'
+        }
+    };
+    checkConsistentOutput(addTwo, 10);
+
+    function formalGreeting() {
+    console.log("How are you?");
+    }
+    function casualGreeting() {
+    console.log("What's up?");
+    }
+    function greet(type, greetFormal, greetCasual) {
+        if(type === 'formal') {
+            greetFormal();
+        } else if(type === 'casual') {
+            greetCasual();
+        }
+    }
+    // prints 'What's up?'
+    greet('casual', formalGreeting, casualGreeting);
+
+    //ITERATORS
+
+    //forEach
+    const groceries= ['banana', 'apple','salt', 'walnuts']
+    groceries.forEach(function(groceryItem){
+        console.log('-'+groceryItem);
+    })
+    //or
+    groceries.forEach(groceryItem => console.log(groceryItem));
+    //or
+    function printGrocery(element){
+    console.log(element);
+    }
+    groceries.forEach(printGrocery);
+
+    const fruits = ['mango', 'papaya', 'pineapple', 'apple'];
+    // Iterate over fruits below
+    fruits.forEach(function(fruit){
+            console.log('I want to eat a '+ fruit);
+        })
+    //output;
+    // I want to eat a mango
+    // I want to eat a papaya
+    // I want to eat a pineapple
+    // I want to eat a apple
+
+    //map--it takes an argument of a callback function and returns a new array!
+    const numbers = [1, 2, 3, 4, 5]; 
+    const bigNumbers = numbers.map(number => {
+    return number * 10;
+    });
+    console.log(numbers); // Output: [1, 2, 3, 4, 5]
+    console.log(bigNumbers); // Output: [10, 20, 30, 40, 50]
+    const animals = ['Hen', 'elephant', 'llama', 'leopard', 'ostrich', 'Whale', 'octopus', 'rabbit', 'lion', 'dog'];
+    // Create the secretMessage array below
+    const secretMessage=animals.map(animal => {
+    return animal[0];
+    });
+    console.log(secretMessage.join('')); //Output;HelloWorld
+
+    const bigNumbers = [100, 200, 300, 400, 500];
+    // Create the smallNumbers array below
+    const smallNumbers=bigNumbers.map(number=>{
+    return number/100;
+    })
+    
+    //The .filter() Method
+    const words = ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; 
+
+    const shortWords = words.filter(word => {
+    return word.length < 6;
+    });
+
+    console.log(words); // Output: ['chair', 'music', 'pillow', 'brick', 'pen', 'door']; 
+    console.log(shortWords); // Output: ['chair', 'music', 'brick', 'pen', 'door']
+
+    //The .findIndex() Method
+    const jumbledNums = [123, 25, 78, 5, 9]; 
+
+    const lessThanTen = jumbledNums.findIndex(num => {
+    return num < 10;
+    });
+    console.log(lessThanTen); // Output: 3 
+    console.log(jumbledNums[3]); // Output: 5
+    //Great, the element in index 3 is the number 5. This makes sense since 5 is the first element that is less than 10.
+    //If there isn’t a single element in the array that satisfies the condition in the callback, then .findIndex() will return -1.
+    const greaterThan1000 = jumbledNums.findIndex(num => {
+    return num > 1000;
+    });
+
+    console.log(greaterThan1000); // Output: -1
+    const animals = ['hippo', 'tiger', 'lion', 'seal', 'cheetah', 'monkey', 'salamander', 'elephant'];
+    const foundAnimal=animals.findIndex(animal=>{
+    return animal==='elephant';
+    })
+    console.log(foundAnimal); // 7
+
+    const startsWithS=animals.findIndex(animal=>{
+    return animal[0]==='s';
+    })
+    console.log(startsWithS); // 7
+
+    //The .reduce() Method
+    //Another widely used iteration method is .reduce(). The .reduce() method returns a single value after iterating through the elements of an array, thereby reducing the array. Take a look at the example below
+    const numbers = [1, 2, 4, 10];
+
+    const summedNums = numbers.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue
+    })
+    console.log(summedNums) // Output: 17
+    /*
+    numbers is an array that contains numbers.
+    -summedNums is a variable that stores the returned value of invoking .reduce() on numbers.
+    -numbers.reduce() calls the .reduce() method on the numbers array and takes in a callback function as argument.
+    -The callback function has two parameters, accumulator and currentValue. The value of accumulator starts off as the value of the first element in the array and the currentValue starts as the second element. To see the value of accumulator and currentValue change, review the chart above.
+    -As .reduce() iterates through the array, the return value of the callback function becomes the accumulator value for the next iteration, currentValue takes on the value of the current element in the looping process.
+    */
+
+    //The .reduce() method can also take an optional second parameter to set an initial value for accumulator (remember, the first argument is the callback function!). For instance:
+    const numbers = [1, 2, 4, 10];
+
+    const summedNums = numbers.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue
+    }, 100)  // <- Second argument for .reduce()
+
+    console.log(summedNums); // Output: 117
+
+    const newNumbers = [1, 3, 5, 7];
+
+    const newSum = newNumbers.reduce((accumulator, currentValue) => {
+    console.log('The value of accumulator: ', accumulator);
+    console.log('The value of currentValue: ', currentValue);
+    return accumulator + currentValue;
+    }, 10);
+
+    console.log(newSum);
+    //outPut
+    // The value of accumulator:  10
+    // The value of currentValue:  1
+    // The value of accumulator:  11
+    // The value of currentValue:  3
+    // The value of accumulator:  14
+    // The value of currentValue:  5
+    // The value of accumulator:  19
+    // The value of currentValue:  7
+    // 26
+
+    const cities = ['Orlando', 'Dubai', 'Edinburgh', 'Chennai', 'Accra', 'Denver', 'Eskisehir', 'Medellin', 'Yokohama'];
+
+    const nums = [1, 50, 75, 200, 350, 525, 1000];
+
+    //  Choose a method that will return undefined
+    cities.forEach(city => console.log('Have you visited ' + city + '?'));
+
+    // Choose a method that will return a new array
+    const longCities = cities.filter(city => city.length > 7);
+
+    // Choose a method that will return a single value
+    const word = cities.reduce((acc, currVal) => {
+    return acc + currVal[0]
+    }, "C");
+
+    console.log(word)
+
+    // Choose a method that will return a new array
+    const smallerNums = nums.map(num => num - 5);
+
+    // Choose a method that will return a boolean value
+    nums.every(num => num < 0);
+    // OR nums.some(num => num < 0);
+
+
+    //Output
+    // Have you visited Orlando?
+    // Have you visited Dubai?
+    // Have you visited Edinburgh?
+    // Have you visited Chennai?
+    // Have you visited Accra?
+    // Have you visited Denver?
+    // Have you visited Eskisehir?
+    // Have you visited Medellin?
+    // Have you visited Yokohama?
+    // CODECADEMY
+
+    
+    </script>
+</body>
+</html>
